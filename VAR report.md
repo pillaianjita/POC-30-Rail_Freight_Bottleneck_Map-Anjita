@@ -1,65 +1,165 @@
-# VAR Report
+# VAR Report – Rail Freight Bottleneck Map
 
-## Project
-- Name: POC-30-Rail_Freight_Bottleneck_Map-Anjita
-- Stack: Next.js frontend + FastAPI backend
-- Data source: `backend/mock_data.json` synthetic rail chokepoint dataset
-- Live fallback: optional Overpass/OSM support in `backend/data_adapters.py`
+## Project Information
 
-## Scope of this report
-- Clean up local/generated Git artifacts
-- Restore frontend build/runtime dependencies
-- Verify current repo and documentation state
-- Summarize fixes and next actions
+**Project:** Rail Freight Bottleneck Map
 
-## Findings
-- The repository had a very large number of changed files because generated and local files were not ignored.
-- Key ignored directories/files included:
-  - `frontend/node_modules/`
-  - `frontend/.next/`
-  - `backend/__pycache__/`
-  - `backend/.env`
-  - `frontend/.env.local`
-- There was no root `.gitignore` file, so Git treated these local artifacts as candidate changes.
-- A frontend package installation was needed after cleanup, because `node_modules` and `.next` were removed.
-- The repository now has a clean `.gitignore` and the frontend build is restored.
+**POC Number:** 30
 
-## Actions taken
-1. Added `.gitignore` at repository root with standard entries for:
-   - Node/Next.js build files
-   - Python virtualenv and cache files
-   - local environment files
-   - editor/OS artifacts
-2. Cleaned ignored files from the working tree using `git clean -fdX`.
-3. Reinstalled frontend dependencies with `npm install` in `frontend/`.
-4. Verified `next` exists in `frontend/node_modules/.bin`.
-5. Ran `npm run build` successfully to confirm frontend compilation.
-6. Updated `README.md` to match actual repository contents and current behavior.
+**Theme:** Real Rails Intelligence Dashboard
 
-## Current status
-- `README.md` is updated and aligned with the repo.
-- `frontend` dependencies are installed and `next build` completes.
-- `.gitignore` is present and should prevent local/generated files from appearing in Git changes.
-- Some untracked source changes remain and are ready for commit.
+**Developer:** Pillai Anjita
 
-## Notes for commit
-- Stage only actual source/documentation changes.
-- Do not commit local env or generated folders.
-- Recommended commit items:
-  - `.gitignore`
-  - `README.md`
-  - `backend/*` source changes
-  - `frontend/*` source changes
+**Frameworks:**
 
-## Recommendations
-- Keep `.gitignore` in source control as-is.
-- Do not check in `node_modules`, `.next`, or any `.env` files.
-- Use `frontend/.env.local.example` and `backend/.env.example` as templates.
-- If the repository is intended for GitHub, use `git status` before commit to confirm only source files are included.
+* FastAPI
+* Next.js
+* TypeScript
+* Tailwind CSS
+* Recharts
+* shadcn/ui
 
-## Important caveat
-- During cleanup, a locked virtual environment file prevented full removal of `backend/venv/` inside the repo.
-- Avoid committing `backend/venv/`; if necessary, delete it manually or recreate the backend environment outside the repository path.
+**Audit Type:** Visualization Audit Review (VAR)
+
+**Audit Date:** June 2026
+
+---
+
+## Objective
+
+This audit validates compliance with the Real Rails Intelligence Dashboard standards and verifies that visualization, layout, intelligence, and user interaction requirements have been successfully implemented.
+
+---
+
+## UI Validation
+
+| Requirement                    | Status |
+| ------------------------------ | ------ |
+| Obsidian Background (#030712)  | PASS   |
+| 70/30 Layout Structure         | PASS   |
+| Responsive Dashboard Design    | PASS   |
+| Sidebar Intelligence Panel     | PASS   |
+| Consistent Typography          | PASS   |
+| Professional Dashboard Styling | PASS   |
+
+---
+
+## Architecture Validation
+
+| Requirement                   | Status |
+| ----------------------------- | ------ |
+| Next.js Frontend              | PASS   |
+| FastAPI Backend               | PASS   |
+| API Connectivity              | PASS   |
+| Modular Component Structure   | PASS   |
+| Reusable Dashboard Components | PASS   |
+| Synthetic Data Support        | PASS   |
+
+---
+
+## Data Validation
+
+| Requirement                   | Status |
+| ----------------------------- | ------ |
+| Network API Connected         | PASS   |
+| Chokepoint API Connected      | PASS   |
+| Commodities API Connected     | PASS   |
+| Delay Simulation API Connected| PASS   |
+| Mock Data Available           | PASS   |
+| Data Rendering Accuracy       | PASS   |
+
+---
+
+## Functional Validation
+
+| Feature                    | Status |
+| -------------------------- | ------ |
+| Map and Rail Network       | PASS   |
+| Chokepoint Markers         | PASS   |
+| Sidebar Intelligence       | PASS   |
+| Filters and Interaction    | PASS   |
+| Delay Simulator            | PASS   |
+| Download PNG Export        | PASS   |
+| Sample CSV Export          | PASS   |
+| Commodity Overlay          | PASS   |
+
+---
+
+## Intelligence Validation
+
+| Feature                            | Status |
+| ---------------------------------- | ------ |
+| Why This Matters Panel             | PASS   |
+| Who Controls The Rail Panel        | PASS   |
+| Dashboard Intelligence Context     | PASS   |
+| Selected Chokepoint Intelligence   | PASS   |
+
+---
+
+## Visualization Quality Review
+
+| Criteria              | Status |
+| --------------------- | ------ |
+| Data Clarity          | PASS   |
+| Readability           | PASS   |
+| Information Hierarchy | PASS   |
+| User Navigation       | PASS   |
+| Dashboard Consistency | PASS   |
+| Insight Presentation  | PASS   |
+
+---
+
+## Manifesto Compliance
+
+| Requirement                                         | Status |
+| --------------------------------------------------- | ------ |
+| Background uses #030712                             | PASS   |
+| Sidebar occupies 30% width                          | PASS   |
+| Filters update without full page refresh            | PASS   |
+| Terminology uses Real Rails / rail intelligence     | PASS   |
+| Professional map library used (Leaflet)             | PASS   |
+| Mock fallback available via `backend/mock_data.json`| PASS   |
+| No hardcoded API keys                                | PASS   |
+
+---
+
+## UAT Reference
+
+Associated user acceptance testing is documented in:
+
+```text
+UAT.md
+```
+
+All tested functionality passed validation.
+
+---
+
+## Overall Result
+
+**VAR Status:** PASS
+
+The Rail Freight Bottleneck Map satisfies the Real Rails Intelligence Dashboard standards and POC #30 requirements.
+
+Validated capabilities include:
+
+* Chokepoint intelligence dashboard
+* Rail network visualization
+* Commodity overlay analytics
+* Delay simulation behavior
+* Export functionality
+* Sidebar intelligence panels
+* Synthetic mock data support
+
+---
+
+## Final Sign-off
+
+Visualization Audit Result:
+
+**APPROVED**
+
+Ready for Intelligence Library Submission.
 
 ## Sign-off
 - Prepared by: Pillai Anjita
