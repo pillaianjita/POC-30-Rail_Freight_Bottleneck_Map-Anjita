@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Leaflet CSS */
+@import 'leaflet/dist/leaflet.css';
+
+:root {
+  --color-obsidian: #030712;
+  --color-surface: #0B1117;
+  --color-surface-raised: #111827;
+  --color-border: #1F2937;
+  --color-cyan: #38BDF8;
+  --color-indigo: #818CF8;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #__next {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Override Leaflet dark tiles */
+.leaflet-container {
+  background: var(--color-obsidian) !important;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(11, 17, 23, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+}
+
+/* Cyan glow on active interactive elements */
+.glow-cyan:focus,
+.glow-cyan:hover {
+  box-shadow: 0 0 0 0.5px #38BDF8, 0 0 8px rgba(56, 189, 248, 0.15);
+  outline: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #374151; }
+
+/* Leaflet popup override */
+.leaflet-popup-content-wrapper {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 8px !important;
+  color: #F9FAFB !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.6) !important;
+}
+.leaflet-popup-tip {
+  background: var(--color-surface) !important;
+}
+.leaflet-popup-close-button {
+  color: #6B7280 !important;
+}
+
+/* Severity pulse animation */
+@keyframes pulse-critical {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.08); }
+}
+.pulse-critical { animation: pulse-critical 1.5s ease-in-out infinite; }
+
+/* Glowing chokepoint markers */
+.glow-marker-leaflet {
+  background: transparent !important;
+  border: none !important;
+}
+
+.glow-marker {
+  position: relative;
+  width: calc(var(--glow-size) * 2.8);
+  height: calc(var(--glow-size) * 2.8);
+}
+
+.glow-marker-halo,
+.glow-marker-ring,
+.glow-marker-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.glow-marker-halo {
+  width: calc(var(--glow-size) * 2.4);
+  height: calc(var(--glow-size) * 2.4);
+  background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+  opacity: 0.45;
+  filter: blur(6px);
+}
+
+.glow-marker-ring {
+  width: calc(var(--glow-size) * 1.6);
+  height: calc(var(--glow-size) * 1.6);
+  border: 2px solid var(--glow-color);
+  opacity: 0.55;
+  box-shadow: 0 0 12px var(--glow-color), 0 0 24px color-mix(in srgb, var(--glow-color) 40%, transparent);
+}
+
+.glow-marker-core {
+  width: var(--glow-size);
+  height: var(--glow-size);
+  background: var(--glow-color);
+  box-shadow: 0 0 8px var(--glow-color), 0 0 16px var(--glow-color);
+}
+
+.glow-marker-pulse .glow-marker-ring,
+.glow-marker-pulse .glow-marker-core {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.glow-marker-selected .glow-marker-ring {
+  border-color: #38BDF8;
+  box-shadow: 0 0 16px #38BDF8, 0 0 32px rgba(56, 189, 248, 0.4);
+}
+
+.glow-marker-selected .glow-marker-core {
+  box-shadow: 0 0 12px #38BDF8, 0 0 24px #38BDF8;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--glow-color), 0 0 16px var(--glow-color);
+  }
+  50% {
+    opacity: 0.75;
+    box-shadow: 0 0 14px var(--glow-color), 0 0 28px var(--glow-color), 0 0 42px color-mix(in srgb, var(--glow-color) 50%, transparent);
+  }
+}
