@@ -1,0 +1,46 @@
+
+> rail-freight-bottleneck@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.3
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+ ⨯ ESLint: Failed to load config "next/typescript" to extend from. Referenced from: c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\.eslintrc.json
+   Collecting page data ...
+   Generating static pages (0/4) ...
+   Generating static pages (1/4) 
+   Generating static pages (2/4) 
+   Generating static pages (3/4) 
+ReferenceError: window is not defined
+    at c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\.next\server\app\page.js:1:6935
+    at 8052 (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\.next\server\app\page.js:1:153392)
+    at t (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\.next\server\webpack-runtime.js:1:143)
+    at 2662 (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\.next\server\app\page.js:9:7478)
+    at Object.t [as require] (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\.next\server\webpack-runtime.js:1:143)
+    at require (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:16:18365)
+    at I (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94362)
+    at c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96668
+    at F._fromJSON (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97106)
+    at JSON.parse (<anonymous>) {
+  digest: '2722998852'
+}
+
+Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+
+ReferenceError: window is not defined
+    at c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\.next\server\app\page.js:1:6935
+    at 8052 (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\.next\server\app\page.js:1:153392)
+    at t (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\.next\server\webpack-runtime.js:1:143)
+    at 2662 (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\.next\server\app\page.js:9:7478)
+    at Object.t [as require] (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\.next\server\webpack-runtime.js:1:143)
+    at require (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:16:18365)
+    at I (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:94362)
+    at c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:96668
+    at F._fromJSON (c:\Users\pilla\Desktop\POC-30-Rail_Freight_Bottleneck_Map-Anjita\frontend\node_modules\next\dist\compiled\next-server\app-page.runtime.prod.js:12:97106)
+    at JSON.parse (<anonymous>)
+ ✓ Generating static pages (4/4)
+
+> Export encountered errors on following paths:
+	/page: /

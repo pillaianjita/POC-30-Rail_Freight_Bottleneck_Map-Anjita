@@ -1,10 +1,11 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { getChokepoints, getCommodities, getDelaySimulation, getExportUrl, getMetrics, getNetwork } from "@/lib/api";
 import type { ChokepointProperties, CommodityDatum, DelaySimulation, FeatureCollection, Metrics } from "@/types";
 import type { RailMapHandle } from "@/components/ui/map/RailMap";
-import MapPanel from "@/components/ui/map/MapPanel";
+const MapPanel = dynamic(() => import("@/components/ui/map/MapPanel"), { ssr: false });
 import { TopBar } from "@/components/ui/TopBar";
 import { IntelligenceSidebar } from "@/components/sidebar/IntelligenceSidebar";
 
@@ -135,7 +136,7 @@ export default function HomePage() {
       <div className="flex h-[calc(100vh-92px)]">
         <section className="pr-3" style={{ width: "70%" }}>
           <MapPanel
-            ref={mapRef}
+            mapRef={mapRef}
             network={network}
             chokepoints={chokepoints}
             selectedChokepointId={selectedChokepointId}
