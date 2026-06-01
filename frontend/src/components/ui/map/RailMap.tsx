@@ -82,7 +82,8 @@ function downloadBlob(blob: Blob, filename: string, mime?: string) {
   document.body.appendChild(link);
   link.click();
   link.remove();
-  URL.revokeObjectURL(url);
+  // Revoke after a short delay to avoid revoking before the browser starts the download.
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 async function exportViaLeafletCanvas(
@@ -177,14 +178,19 @@ const RailMapComponent = forwardRef<RailMapHandle, RailMapProps>(function RailMa
 
       try {
         const html2canvas = (await import("html2canvas")).default;
-        const canvas = await html2canvas(container, {
+        // Prefer capturing the Leaflet map container directly with explicit dimensions to
+        // avoid html2canvas cropping issues and tile seams caused by document offsets.
+        const mapContainer = map.getContainer();
+        const size = map.getSize();
+        const canvas = await html2canvas(mapContainer, {
           useCORS: true,
           allowTaint: true,
           backgroundColor: "#030712",
           scale: 2,
           logging: false,
-          foreignObjectRendering: true,
-          ignoreElements: (element) => element.classList.contains("leaflet-control-container"),
+          foreignObjectRendering: false,
+          width: size.x,
+          height: size.y,
           onclone: (clonedDocument) => {
             clonedDocument.querySelectorAll(".leaflet-tile-pane img").forEach((img) => {
               const image = img as HTMLImageElement;

@@ -188,6 +188,9 @@ export function IntelligenceSidebar({
           ) : null}
           <a
             href={exportUrl}
+            download="rail-sample-data.csv"
+            target="_blank"
+            rel="noreferrer"
             className="glow-cyan flex items-center justify-center gap-2 rounded-md border border-slate-border px-3 py-2 text-xs text-slate-300 transition-colors hover:bg-surface-raised/60"
           >
             <Download size={14} />
