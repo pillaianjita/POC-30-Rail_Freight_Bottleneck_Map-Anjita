@@ -13,7 +13,32 @@ Production-style dark dashboard for U.S. freight rail chokepoint intelligence.
 - Chokepoint ranking, commodity overlay, and delay simulation.
 - Export features: map snapshot PNG and sample CSV download.
 
-The app uses synthetic mock rail data in `backend/mock_data.json`, with an optional Overpass/OSM live node fallback in the backend.
+The app uses synthetic mock rail data in `backend/mock_data.json`, with Overpass/OSM as the primary live data source and fallback to mock when unavailable.
+
+---
+
+## Tech Stack
+
+### Frontend
+- **Next.js 14+** — React framework with App Router
+- **TypeScript** — Type-safe code
+- **Tailwind CSS** — Utility-first styling
+- **Leaflet + react-leaflet** — Interactive map rendering
+- **html2canvas** — Map snapshot export to PNG
+- **Recharts** — Analytics charts and visualizations
+- **Radix UI** — Accessible UI components (selects, tooltips, sliders)
+- **Lucide React** — Icon library
+
+### Backend
+- **FastAPI** — Python web framework for API
+- **Uvicorn** — ASGI server
+- **httpx** — HTTP client for Overpass API calls
+- **python-dotenv** — Environment variable management
+- **csv / io** — CSV export generation
+
+### Data Sources
+- **Overpass API / OpenStreetMap** — Primary source for live railway data (stations, rail ways)
+- **Mock Data** — Fallback dataset with synthetic rail metrics (delays, throughput, incidents)
 
 ---
 
@@ -130,13 +155,12 @@ NEXT_PUBLIC_API_BASE=http://localhost:8000
 
 ## Notes on data sources
 
-- The dashboard is currently powered by `backend/mock_data.json`.
-- `backend/data_adapters.py` includes an Overpass/OSM fallback for live node enrichment.
-- US Census is noted as a future enhancement, but it is not yet implemented in active metrics.
+- Primary source: Overpass API / OpenStreetMap — fetches live railway stations and rail ways
+- Fallback: `backend/mock_data.json` — used if Overpass is unavailable or rate-limited
+- Metrics enrichment: Synthetic values for delays, throughput, incidents, and commodities (both sources)
+- Future: US Census API integration planned for demographic and economic context
 
 ---
-
-## API endpoints
 
 | Endpoint | Description |
 |---|---|
@@ -149,10 +173,3 @@ NEXT_PUBLIC_API_BASE=http://localhost:8000
 | `GET /api/export/sample-data` | Download sample CSV data |
 
 All endpoints support filter query params such as `commodity`, `region`, `severity`, and `min_utilization`.
-
----
-
-## Recent updates
-
-- `backend/mock_data.json` was updated so sample chokepoints align more closely with rail line geometry.
-- README now reflects the actual repo structure and current behavior.
